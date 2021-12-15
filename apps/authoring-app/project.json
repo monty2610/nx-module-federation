@@ -1,0 +1,74 @@
+{
+  "root": "apps/authoring-app",
+  "sourceRoot": "apps/authoring-app/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "outputPath": "dist/apps/authoring-app",
+        "index": "apps/authoring-app/src/index.html",
+        "baseHref": "/",
+        "main": "apps/authoring-app/src/main.tsx",
+        "polyfills": "apps/authoring-app/src/polyfills.ts",
+        "tsConfig": "apps/authoring-app/tsconfig.app.json",
+        "assets": [
+          "apps/authoring-app/src/favicon.ico",
+          "apps/authoring-app/src/assets"
+        ],
+        "styles": ["apps/authoring-app/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "./apps/authoring-app/webpack.config.js"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/authoring-app/src/environments/environment.ts",
+              "with": "apps/authoring-app/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "authoring-app:build",
+        "hmr": false,
+        "port": 3000,
+        "liveReload": false
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "authoring-app:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/authoring-app/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/authoring-app"],
+      "options": {
+        "jestConfig": "apps/authoring-app/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
