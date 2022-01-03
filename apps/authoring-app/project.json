@@ -20,7 +20,8 @@
         ],
         "styles": ["apps/authoring-app/src/styles.scss"],
         "scripts": [],
-        "webpackConfig": "./apps/authoring-app/webpack.config.js"
+        "webpackConfig": "./apps/authoring-app/webpack.config.js",
+        "runtimeChunk": false
       },
       "configurations": {
         "production": {
@@ -44,8 +45,10 @@
       "options": {
         "buildTarget": "authoring-app:build",
         "hmr": false,
-        "port": 3000,
-        "liveReload": false
+        "port": 3001,
+        "liveReload": false,
+        "allowedHosts": "http://localhost:4001",
+        "prod": true
       },
       "configurations": {
         "production": {

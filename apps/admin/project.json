@@ -41,8 +41,9 @@
       "options": {
         "buildTarget": "admin:build",
         "hmr": false,
-        "port": 4000,
-        "liveReload": false
+        "port": 4001,
+        "liveReload": false,
+        "prod": true
       },
       "configurations": {
         "production": {

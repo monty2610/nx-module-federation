@@ -1,16 +1,22 @@
-const webpackConfig = require('@nrwl/react/plugins/webpack');
 const { ModuleFederationPlugin } = require('webpack').container;
 
-module.exports = (config, context) => {
-    const c = webpackConfig(config);
+module.exports = (c, context) => {
+    c.context = process.cwd();
+    c.optimization.runtimeChunk = false;
     c.plugins.push(new ModuleFederationPlugin({
       name: 'authoring_app',
       filename: 'remoteEntry.js',
       exposes: {
-        './App': './src/app/app'
+        './AuthoringApp': './apps/authoring-app/src/app/app'
       },
       shared: ['react', 'react-dom']
     }));
+
+    c.output = {
+          uniqueName: 'authoring_app',
+          publicPath: 'auto',
+          clean: true,
+        }
 
     return c;
   };

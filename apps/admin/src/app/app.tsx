@@ -1,7 +1,7 @@
 import React from 'react';
 
 // @ts-ignore
-const AuthoringApp = React.lazy(() => import('authoring_app/App'));
+const AuthoringApp = React.lazy(() => import('authoring_app/AuthoringApp'));
 
 export function App() {
   return (

@@ -6,7 +6,7 @@ module.exports = (config, context) => {
     c.plugins.push(new ModuleFederationPlugin({
       name: 'admin_app',
       remotes: {
-        'authoring_app': 'authoring_app@http://localhost:3000/remoteEntry.js'
+        'authoring_app': 'authoring_app@http://localhost:3001/remoteEntry.js'
       },
       shared: ['react', 'react-dom']
     }));

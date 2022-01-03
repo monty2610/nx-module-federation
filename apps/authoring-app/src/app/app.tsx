@@ -1,7 +1,4 @@
-import styles from './app.module.scss';
-
-import { ReactComponent as Logo } from './logo.svg';
-import star from './star.svg';
+import React from 'react';
 
 export function App() {
   return (
